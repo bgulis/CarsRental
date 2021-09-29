@@ -30,9 +30,8 @@ public class CarServiceImpl implements CarService {
     public String getCarNameById(Integer id) {
         return cars.stream()
                 .filter(car -> Objects.equals(car.getId(id), id))
-                .findFirst()
                 .map(Cars::getCarModel)
-                .toString();
+                .findFirst().orElse(null);
     }
 
     @Override
