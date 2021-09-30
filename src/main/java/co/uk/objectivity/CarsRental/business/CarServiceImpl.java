@@ -1,6 +1,7 @@
 package co.uk.objectivity.CarsRental.business;
 
 import co.uk.objectivity.CarsRental.model.Cars;
+import co.uk.objectivity.CarsRental.model.OperationStatus;
 import co.uk.objectivity.CarsRental.model.Status;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,21 @@ public class CarServiceImpl implements CarService {
     @Override
     public Cars getCarById(Integer id) {
         return  cars.stream().filter(car-> Objects.equals(car.getId(id), id)).findFirst().orElse(null);
+    }
+
+    @Override
+    public boolean deleteCarById(Integer id) {
+        return cars.remove(getCarById(id));
+    }
+
+    @Override
+    public boolean updateCarById(Integer id) {
+        return true;
+    }
+
+    @Override
+    public boolean addCar(Cars car) {
+        return cars.add(car);
     }
 
 

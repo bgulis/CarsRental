@@ -2,10 +2,8 @@ package co.uk.objectivity.CarsRental.controller;
 
 import co.uk.objectivity.CarsRental.business.CarService;
 import co.uk.objectivity.CarsRental.model.Cars;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import co.uk.objectivity.CarsRental.model.OperationStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,4 +30,29 @@ public class CarsController {
     Cars GetCarById(@PathVariable Integer id){
         return carsService.getCarById(id);
     }
+
+    @DeleteMapping("/{id}")
+    OperationStatus deleteCarById(@PathVariable Integer id){
+        if(carsService.deleteCarById(id)){
+            return OperationStatus.SUCCESS;
+        }else{
+            return OperationStatus.FAILURE;
+        }
+    }
+
+    @PutMapping("/{id}")
+    OperationStatus updateCarById(@RequestBody Cars car, @PathVariable("id") Integer id){
+        if(carsService.updateCarById(id)){
+            return OperationStatus.SUCCESS;
+        }else{
+            return OperationStatus.FAILURE;
+        }
+    }
+
+    @PostMapping
+    boolean addNewCar(@RequestBody Cars car){
+        return carsService.addCar(car);
+    }
+
+
 }
