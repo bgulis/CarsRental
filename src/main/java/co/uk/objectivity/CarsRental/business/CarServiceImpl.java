@@ -24,6 +24,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Cars> getAllCars() {
+//        cars.add(new Cars(15,"Fiat", Status.IN_USE,BigDecimal.valueOf(10), Collections.singletonList("hybrid")));
         return cars;
     }
 
@@ -43,6 +44,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public boolean deleteCarById(Integer id) {
         return cars.remove(getCarById(id));
+
     }
 
     @Override
