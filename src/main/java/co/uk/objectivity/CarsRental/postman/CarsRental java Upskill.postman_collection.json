@@ -30,7 +30,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/cars/2",
+					"raw": "http://localhost:8082/cars/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -38,7 +38,7 @@
 					"port": "8082",
 					"path": [
 						"cars",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -50,7 +50,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/cars/name/1",
+					"raw": "http://localhost:8082/cars/name/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -59,7 +59,7 @@
 					"path": [
 						"cars",
 						"name",
-						"1"
+						"2"
 					]
 				}
 			},
@@ -75,7 +75,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"carModel\": \"Fiat1\",\r\n        \"status\": \"IN_USE\",\r\n        \"price\": 2210,\r\n        \"features\": [\r\n            \"hybrid, manual\"\r\n        ]\r\n}",
+					"raw": "{\r\n        \"carModel\": \"Fiat4\",\r\n        \"status\": \"IN_USE\",\r\n        \"price\": 2210,\r\n        \"features\": [\r\n            \"hybrid, manual\"\r\n        ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -102,17 +102,16 @@
 				"method": "PUT",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "carModel",
-							"value": "\"Updated BMW\"",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n        \"carModel\": \"Fiat_updated\",\r\n        \"status\": \"IN_USE\",\r\n        \"price\": 2210,\r\n        \"features\": [\r\n            \"hybrid, manual\"\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
-					"raw": "http://localhost:8082/cars/2",
+					"raw": "http://localhost:8082/cars/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -120,7 +119,7 @@
 					"port": "8082",
 					"path": [
 						"cars",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -132,7 +131,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/cars/2",
+					"raw": "http://localhost:8082/cars/0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -140,7 +139,7 @@
 					"port": "8082",
 					"path": [
 						"cars",
-						"2"
+						"0"
 					]
 				}
 			},
