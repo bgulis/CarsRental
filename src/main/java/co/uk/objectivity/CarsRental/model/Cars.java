@@ -10,6 +10,9 @@ public class Cars {
     private BigDecimal price;
     private List<String> features;
 
+    public Cars() {
+    }
+
     public Cars(Integer id, String carModel, Status status, BigDecimal price) {
         this.id = id;
         this.carModel = carModel;

@@ -10,5 +10,6 @@ public interface CarService {
     Cars getCarById(Integer id);
     boolean deleteCarById(Integer id);
     boolean addCar(Cars car);
-    boolean updateCarById(Integer id);
+    Cars updateCarById(Cars car, Integer id);
+    Integer getNextNumberId();
 }

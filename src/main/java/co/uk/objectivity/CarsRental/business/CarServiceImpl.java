@@ -1,26 +1,21 @@
 package co.uk.objectivity.CarsRental.business;
 
 import co.uk.objectivity.CarsRental.model.Cars;
-import co.uk.objectivity.CarsRental.model.OperationStatus;
-import co.uk.objectivity.CarsRental.model.Status;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-
-import static java.util.Arrays.asList;
 
 @Service
 public class CarServiceImpl implements CarService {
 
-    private List<Cars> cars = asList(
-            new Cars(1,"Kia", Status.FREE_TO_USE, BigDecimal.valueOf(100)),
-            new Cars(2,"Ford", Status.FREE_TO_USE,BigDecimal.valueOf(90)),
-            new Cars(3,"Volvo", Status.IN_USE,BigDecimal.valueOf(210), Collections.singletonList("red, automatic, hybrid"))
-    );
+//    private List<Cars> cars = asList(
+//            new Cars(1,"Kia", Status.FREE_TO_USE, BigDecimal.valueOf(100)),
+//            new Cars(2,"Ford", Status.FREE_TO_USE,BigDecimal.valueOf(90)),
+//            new Cars(3,"Volvo", Status.IN_USE,BigDecimal.valueOf(210), Collections.singletonList("red, automatic, hybrid"))
+//    );
+    private List<Cars> cars = new ArrayList<>();
 
     @Override
     public List<Cars> getAllCars() {
@@ -48,13 +43,19 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public boolean updateCarById(Integer id) {
-        return true;
+    public Cars updateCarById(Cars car, Integer id) {
+
+        return cars.set(id, car);
     }
 
     @Override
     public boolean addCar(Cars car) {
+        car.setId(getNextNumberId());
         return cars.add(car);
+    }
+
+    public Integer getNextNumberId(){
+        return cars.size();
     }
 
 
