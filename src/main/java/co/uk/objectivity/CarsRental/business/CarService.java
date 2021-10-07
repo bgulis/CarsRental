@@ -9,7 +9,7 @@ public interface CarService {
     String getCarNameById(Integer id);
     Cars getCarById(Integer id);
     boolean deleteCarById(Integer id);
-    boolean addCar(Cars car);
+    String addCar(Cars car);
     Cars updateCarById(Cars car, Integer id);
     Integer getNextNumberId();
 }

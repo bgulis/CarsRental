@@ -5,8 +5,6 @@ import co.uk.objectivity.CarsRental.model.Cars;
 import co.uk.objectivity.CarsRental.model.OperationStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("cars")
 public class CarsController {
@@ -18,8 +16,13 @@ public class CarsController {
     }
 
     @GetMapping
-    List<Cars> getAllCars(){
-        return carsService.getAllCars();
+    Object getAllCars(){
+        if (carsService.getAllCars().isEmpty()){
+            return "No records";
+        }else{
+            return carsService.getAllCars();
+        }
+
     }
 
     @GetMapping("/name/{id}")
@@ -41,23 +44,24 @@ public class CarsController {
     }
 
     @PutMapping("/{id}")
-    OperationStatus updateCarById(@RequestBody Cars car, @PathVariable("id") Integer id){
+    String updateCarById(@RequestBody Cars car, @PathVariable("id") Integer id){
 
         try{
             carsService.updateCarById(car, id);
-            return OperationStatus.SUCCESS;
+            return "Update succeeded on id: " ;
         }catch(Exception e){
-            return OperationStatus.FAILURE;
+            return "Update failed on id: " +car.getId(id);
         }
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    OperationStatus addNewCar(@RequestBody Cars car){
-        if(carsService.addCar(car)){
-            return OperationStatus.SUCCESS;
-        }else{
-            return OperationStatus.FAILURE;
-        }
+    String addNewCar(@RequestBody Cars car){
+//        if(carsService.addCar(car)){
+//            return OperationStatus.SUCCESS;
+//        }else{
+//            return OperationStatus.FAILURE;
+//        }
+        return carsService.addCar(car);
     }
 
 

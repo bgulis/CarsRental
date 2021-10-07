@@ -19,7 +19,6 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Cars> getAllCars() {
-//        cars.add(new Cars(15,"Fiat", Status.IN_USE,BigDecimal.valueOf(10), Collections.singletonList("hybrid")));
         return cars;
     }
 
@@ -44,18 +43,21 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Cars updateCarById(Cars car, Integer id) {
-
+        car.setId(id+1);
         return cars.set(id, car);
     }
 
     @Override
-    public boolean addCar(Cars car) {
-        car.setId(getNextNumberId());
-        return cars.add(car);
+    public String addCar(Cars car) {
+        Integer newId = getNextNumberId();
+        car.setId(newId);
+        cars.add(car);
+
+        return "Car created, id: " +newId;
     }
 
     public Integer getNextNumberId(){
-        return cars.size();
+        return cars.size()+1;
     }
 
 
