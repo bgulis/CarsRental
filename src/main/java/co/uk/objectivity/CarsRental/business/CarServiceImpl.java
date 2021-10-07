@@ -42,9 +42,12 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Cars updateCarById(Cars car, Integer id) {
-        car.setId(id+1);
-        return cars.set(id, car);
+    public String updateCarById(Cars car, Integer id) {
+        int idCars = id + 1;
+        int indexList = id - 1;
+        car.setId(idCars);
+        cars.set(indexList, car);
+        return "Car updated, id: " + id;
     }
 
     @Override

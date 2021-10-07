@@ -46,12 +46,8 @@ public class CarsController {
     @PutMapping("/{id}")
     String updateCarById(@RequestBody Cars car, @PathVariable("id") Integer id){
 
-        try{
-            carsService.updateCarById(car, id);
-            return "Update succeeded on id: " ;
-        }catch(Exception e){
-            return "Update failed on id: " +car.getId(id);
-        }
+            return carsService.updateCarById(car, id);
+
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")

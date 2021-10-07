@@ -10,6 +10,6 @@ public interface CarService {
     Cars getCarById(Integer id);
     boolean deleteCarById(Integer id);
     String addCar(Cars car);
-    Cars updateCarById(Cars car, Integer id);
+    String updateCarById(Cars car, Integer id);
     Integer getNextNumberId();
 }
